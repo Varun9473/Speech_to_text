@@ -1,0 +1,193 @@
+
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-default bg-light">
+  
+  <a class="navbar-brand" href="#" style="margin-left: 10px">ASR</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item active" style="margin-left:200%">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+	  </ul>
+	  <div>
+			{% if user.is_authenticated %}
+			
+			  <a class="nav-link" href="{% url 'logout' %}" >logout</a>
+			
+			
+			  <a class="nav-link">{{ user.username }}</a>
+		
+		   
+			{% else %}
+			  <a class="nav-link" href="{% url 'login' %}">login</a>
+		
+		  {% endif %}
+	  </div>
+    </div>
+  </nav>
+
+  <b style="font-size: 25px"> STR </b><br>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float:right">
+  <i class="fas fa-plus-circle"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+        <form  method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <td>{{ form|crispy }}</td>
+
+         <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary">
+        </form>
+      </div>
+      
+      
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+              </div>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>A/T</th>
+      <th>M/T</th> 
+    </tr>
+    </tr>
+  </thead>
+
+  {% for k in data %}
+<tr>
+
+  <td>{{ k.id }}</td>
+  <td>{{ k.url }}</td>
+  <td>{{ k.size }}</td>
+  <td>
+    {% if text_url is None %}
+    <button type="button" value="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ k.id }}" >A/T</button>
+    {% else %}
+    <button type="button" value="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal{{ k.id }}" >A/T</button>
+    {% endif %}
+    <div class="modal" id="myModal{{ k.id }}">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Automatic Transcript</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <a href="/{{k.text_url}}" download >Download</a>
+            </div>
+      
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </td>
+  <td>
+    <button type="button" value="submit" class="btn btn-danger" data-toggle="modal" data-target="#mtModal{{ k.id }}">MT</button>
+    <div class="modal" id="mtModal{{ k.id }}">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <a href="/{{k.updated_url}}" download>Download</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </td>
+  <td></td>
+
+
+  <td>
+    
+    <div class="dropdown">
+        <i class="fas fa-ellipsis-h"  data-toggle="dropdown" style="float:right" ></i>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="transcript/{{ k.id }}">Action</a>
+          <a class="dropdown-item" href="transcript/delete/{{ k.id }}">Delete</a>
+          <!-- <a class="dropdown-item" href="/edit/">Edit</a> -->
+        </div>
+      </div>
+  </td>
+</tr>
+
+
+
+
+
+
+{% endfor %}
+</table>
+
+
+</div>
+
+
+  {% endblock %}
+
+

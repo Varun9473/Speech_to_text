@@ -1,0 +1,30 @@
+ 0 --> 00:00:15
+hello everyone welcome to reduction to mooc course on electric vehicles so this course is you can consider as a first level course on electric vehicles the aim of this course is to enable students
+00:00:15 --> 00:00:31
+to learn the basic operation and working principle of the different aspects of electric vehicles it will also help students to perceive a carrier electric vehicles which is coming up in a big way
+00:00:31 --> 00:00:49
+so all of you may be aware of the government schemes in this area like fame which is faster adoption and manufacturing of electric vehicles in india secondly next mission electric mobility so these are too many schemes of government which are
+00:00:49 --> 00:01:09
+enabling in manufacturing and development and design of e varies in a you know the total weight so the government is targeting you know lot of manufacturing and v for that what we need is skilled manpower so students can hope a very good carrier in electric vehicles the near future
+00:01:09 --> 00:01:30
+so but this course will cover so this will cover basically the operation of battery driven electric vehicles we can also cover hybrid electric vehicles but to a smaller level in maybe a next modules so the coarsely start
+00:01:30 --> 00:01:47
+with introduction section which is very important for any course so it will help students to know the different areas which come under the umbrella of electric vehicles is a big area is a very big area because when you start manufacturing
+00:01:47 --> 00:02:02
+any electric vehicle you will know that say it covers you know all domains of engineering it requires electrical background mechanical background chemical background may be automobile engineering background
+00:02:02 --> 00:02:18
+so through this course we are trying to bridge this gap so the students can you know will overcome the inertia and start learning this domain the main focus areas
+00:02:18 --> 00:02:33
+which come under electrical domain are vehicle dynamics automotive electronics which is dominantly power electronics motor drives means the control of different types of electrical motors
+00:02:33 --> 00:02:52
+understanding and operating batteries of different types then the charging infrastructure how to charges batteries and keep them in good condition it also covers you know the coming areas of electric vehicles
+00:02:52 --> 00:03:08
+related to power great such as v equal to greed greed to vehicle because the charging of electric vehicles depends on the quality of power grid and it will affect the portrayed in return
+00:03:08 --> 00:03:21
+another important aspect of this course is that it will be kind of a design course students can expect that lot of numericals as well as you know simulations
+00:03:21 --> 00:03:38
+the simulations can be done in any software but like c or whichever students will like to prefer from the point of this course we will demonstrate those design examples using matlab simulink and the end of this course
+00:03:38 --> 00:03:54
+the design and simulation exercises will enable students to connect to real time applications they can take the data of the present wave is like two wheelers three wheelers four wheelers and so on
+00:03:54 --> 00:04:12
+and you change your performances in matlab exercises so is a kind of you know adhering to real time applications so thank you everyone for listening to this introduction video and i welcome students to join this course 

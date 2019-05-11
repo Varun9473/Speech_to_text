@@ -1,0 +1,48 @@
+{% load filesize %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        {{ form.as_p }}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="modal-close waves-effect waves-green btn-flat">submit</button>
+    </div>
+  </div>
+  </form>
+
+  <table style="font-size: 20px">
+        <thead>
+          <tr>
+            
+              <th>ID</th>
+              <th>File Name</th>
+              <th>Size</th>
+              <th>A/T</th>
+              <th>M/T</th> 
+        </tr>
+    </thead>
+  
+      {% for k in data %}
+        <tr>
+  
+          <td>{{ k.id }}</td>
+          <td>{{ k.url }}</td>
+          <td>{{ k.url.size|filesize }}</td>
+          <td></td>
+          
+          
+          <td><a class='dropdown-trigger' href='javascript:void(0);' data-target='dropdown{{ k.id }}'><i class="material-icons" style="float:right">more_horiz</i></a>
+  
+        <ul id='dropdown{{ k.id }}' class='dropdown-content'>
+          <li><a href="#!">action</a></li>
+          <li><a href="#!">edit</a></li>
+          <li><a href="/deletefile/{{ k.id }}">delete</a></li>
+        </ul>
+      </td>
+      
+         </tr>
+        {% endfor %}
+  </table>

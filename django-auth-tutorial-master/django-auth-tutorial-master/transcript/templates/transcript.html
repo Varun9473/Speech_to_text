@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <audio controls>
+                <source src="/media/{{ obj2.url }}" type="audio/wav">
+                   
+            </audio>
+        </div>
+    </div>
+    <form method="POST" action="{% url 'update' %}">{% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12">
+            <textarea name="text-file" id="" cols="30" rows="5" readonly class="form-control">
+               {{ obj1 }}
+               
+        
+            </textarea>
+            <a href="../download" class="btn btn-primary btn-lg dump">Download</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 mt-4">
+            <input type="hidden" name="id" value="{{ obj2.id }}">
+            <textarea name="text-file1" id="" cols="30" rows="5" class="form-control">{{ obj1 }}</textarea>
+            <input type="submit" value="update">
+            <!-- <a href="" class="btn btn-primary btn-lg dump" style="margin-left:1000px">Update</a> -->
+        </div>
+    </div>
+</form>
+    <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-default">Prev</button>
+            <button type="submit" class="btn btn-success ">Save</button>
+            <button type="button" class="btn btn-default">Next</button>
+        </div>
+    </div>
+
+    <script>
+        var main function()
+        {
+            $("#upload").on('submit',function(e)
+                                {
+            e.preventDeafault();
+            $(this).ajaxSubmit(
+                {
+                    beforesend:function()
+                    {
+                        $('#prog').show();
+                        $('#prog').attr('value','0');
+                    }
+                }
+            )
+                                }
+        }
+
+{% endblock %}
